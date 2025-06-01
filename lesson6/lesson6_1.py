@@ -9,12 +9,27 @@ def calculate_bmi(height:int, weight:int)->float:
     bmicalculate = weight / height ** 2
     return bmicalculate
 
+def get_state(bmi:float)->str:
+    if bmi < 18.5:
+        message = '你的體重過輕'
+    elif bmi < 24:
+        message = '你的體重正常'
+    elif bmi < 27:
+        message = '你的體重稍微過重'
+    elif bmi < 30:
+        message = '你已經輕度肥胖'
+    elif bmi < 35:
+        message = '你已經中度肥胖'
+    else:
+        message = '你已經重度肥胖'
+    return message  
+
 def main():
     # BMI計算
     try:
         height:int | float = int(input('請輸入你的身高(公分 cm):'))        
         weight = eval(input('請輸入你的體重(公斤 kg):'))        
-        bmi = calculate_bmi(height,weignt)
+        bmi = calculate_bmi(height,weight)
     except ValueError:
         print('輸入發生錯誤')
     except Exception as e :
@@ -23,18 +38,7 @@ def main():
         print(f'你的身高:{height*100} 公分')
         print(f'你的體重:{weight:.2f} 公斤')
         print(f'你的 BMI值為:{bmi:.2f}')
-        if bmi < 18.5:
-            print('你的體重過輕')
-        elif bmi < 24:
-            print('你的體重正常')
-        elif bmi < 27:
-            print('你的體重稍微過重')
-        elif bmi < 30:
-            print('你已經輕度肥胖')
-        elif bmi < 35:
-            print('你已經中度肥胖')
-        else:
-            print('你已經重度肥胖')
+        print(get_state(bmi))
 
 if __name__ == "__main__":
     main()
