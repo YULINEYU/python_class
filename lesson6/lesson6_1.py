@@ -1,4 +1,4 @@
-def calculate_bmi(h:int | float, w:int)
+def calculate_bmi(h:int, w:int)
     bmicalculate = w / h ** 2
     return bmicalculate
 
